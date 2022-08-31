@@ -25,6 +25,7 @@ export interface SegmentedControlProps {
   onChangeValue?: (name: string) => void;
   sliderStyle?: ViewStyle;
   style?: ViewStyle;
+  hideDividor?: boolean;
 }
 
 export const SegmentedControl = ({
@@ -37,6 +38,7 @@ export const SegmentedControl = ({
   onChangeValue,
   sliderStyle,
   style,
+  hideDividor,
 }: SegmentedControlProps): JSX.Element => {
   const [_initialized, _setInitialized] = useState(false);
   const [_width, _setWidth] = useState(0);
@@ -177,7 +179,7 @@ export const SegmentedControl = ({
               <React.Fragment key={child.props.name}>
                 {index > 0 && (
                   <Divider
-                    hide={currentIndex !== index && currentIndex !== index - 1}
+                    hide={hideDividor === true || (currentIndex !== index && currentIndex !== index - 1)}
                   />
                 )}
                 {{
